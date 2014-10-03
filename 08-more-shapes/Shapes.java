@@ -1,5 +1,6 @@
 public class Shapes {
     public String frame(int r, int c) {
+        // 2 minutes
         String out = new String();
         for (int row = 0; row < r; row++) {
             for (int col = 0; col < c; col++) {
@@ -11,6 +12,7 @@ public class Shapes {
         return out;
     }
     public String stringSplosion(String str) {
+        // 1 minute
         String out = new String();
         for (int i=0; i < str.length();i++) {
             out += str.substring(0,i+1);
@@ -18,6 +20,7 @@ public class Shapes {
         return out;
     }
     public String stringX(String str) {
+        // 1 minute
         String out = new String();
         for (int i=0; i < str.length();i++) {
            if (i==0 || i==str.length()-1 || str.charAt(i)!='x') 
