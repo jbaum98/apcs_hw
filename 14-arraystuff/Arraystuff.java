@@ -51,6 +51,16 @@ public class  Arraystuff {
     return king;
   }
 
+  public int freq(int i) {
+    int total = 0;
+    int target = a[i];
+    for (int j=0; j < a.length; j++) {
+      if (a[j] == target)
+        total++;
+    }
+    return total;
+  }
+
   /*--------------------- Main --------------------*/ 
 
   public static void main(String[] args) {
@@ -58,6 +68,7 @@ public class  Arraystuff {
     System.out.println(as);
     System.out.println(as.find(4));
     System.out.println(as.maxVal());
+    System.out.println(as.freq(0));
   }
 
 }
