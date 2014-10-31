@@ -75,4 +75,19 @@ public class CB {
     }
     return out;
   }
+
+  public int maxMirror(int[] nums) {
+    int max = 0;
+    for (int i = 0; i < nums.length; i++) {
+      for (int j = nums.length-1; j >= i; j--) {
+        int offset = 0;
+        while ( i+offset < nums.length && j-offset >= 0 && nums[i+offset] == nums[j-offset] ) {
+          offset++; 
+        }
+        if (max < offset)
+          max = offset;
+      }
+    }
+    return max;
+  }
 }
