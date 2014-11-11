@@ -26,6 +26,11 @@ public class Sarray {
         }
     }
 
+    private void checkIndex(int index) {
+        if (index > last)
+            throw new IndexOutOfBoundsException(""+index);
+    }
+
     public boolean add(int i){
         makeSpace();
         last++;
@@ -34,16 +39,13 @@ public class Sarray {
     }
 
     public boolean add(int index, int i){
+        checkIndex();
         makeSpace();
-        if (index > last)
-            return false; //TODO make error
-        else {
-            for (int j = last; j >= index; j--) // shift from end
-                data[j+1] = data[j];
-            data[index] = i;
-            last++;
-            return true;
-        }
+        for (int j = last; j >= index; j--) // shift from end
+            data[j+1] = data[j];
+        data[index] = i;
+        last++;
+        return true;
     }
 
     public int size() {
@@ -51,23 +53,19 @@ public class Sarray {
     }
 
     public int get(int index) {
-        if (index > last)
-            return -1; //TODO make error
-        else
-            return data[index];
+        checkIndex();
+        return data[index];
     }
 
     public int set(int index, int i) {
-        if (index > last)
-            return -1; //TODO make error
-        else {
-            int old = data[index];
-            data[index] = i;
-            return old;
-        }
+        checkIndex();
+        int old = data[index];
+        data[index] = i;
+        return old;
     }
 
     public int remove(int index) {
+        checkIndex();
         int old = data[index];
         for (int i=index; i < last; i++) // count up from index
             data[i] = data[i+1];
