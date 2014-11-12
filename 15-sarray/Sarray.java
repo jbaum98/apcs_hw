@@ -39,7 +39,7 @@ public class Sarray {
     }
 
     public boolean add(int index, int i){
-        checkIndex();
+        checkIndex(i);
         makeSpace();
         for (int j = last; j >= index; j--) // shift from end
             data[j+1] = data[j];
@@ -53,19 +53,19 @@ public class Sarray {
     }
 
     public int get(int index) {
-        checkIndex();
+        checkIndex(index);
         return data[index];
     }
 
     public int set(int index, int i) {
-        checkIndex();
+        checkIndex(index);
         int old = data[index];
         data[index] = i;
         return old;
     }
 
     public int remove(int index) {
-        checkIndex();
+        checkIndex(index);
         int old = data[index];
         for (int i=index; i < last; i++) // count up from index
             data[i] = data[i+1];
