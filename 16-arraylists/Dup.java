@@ -10,6 +10,7 @@ public class Dup {
         for (int i = 0; i + 1 < a.size(); i++) {
             if (a.get(i) == a.get(i+1))
                 a.remove(i+1); // i + 1 because fewer shifts
+                i--; // for triples
         }
         System.out.println(a);
     }
