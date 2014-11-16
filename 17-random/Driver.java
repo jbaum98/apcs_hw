@@ -8,11 +8,11 @@ public class Driver {
             else
                 n = 20;
         ArrayList<Integer> a = new ArrayList<Integer>();
-        for (int i = 0; i < n; i++) 
+        for (int i = 0; i < n; i++)
             a.add(i);
         System.out.println(a);
         System.out.println(randomize(a));
-    } 
+    }
 
     public static ArrayList<Integer> randomize(ArrayList<Integer> a) {
         Random r = new Random();
