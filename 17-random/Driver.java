@@ -18,7 +18,7 @@ public class Driver {
         Random r = new Random();
         ArrayList<Integer> out = new ArrayList<Integer>();
         while (a.size() > 0)
-            out.add(a.remove(r.nextInt(a.size())));
+            out.add(a.remove( r.nextInt(a.size()) ));
         return out;
     }
 }
