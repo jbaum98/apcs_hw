@@ -6,7 +6,7 @@ public class Sarray {
     public Sarray(int chunk) {
         this.chunk = chunk;
         last = -1;
-        data = new int[chunk];
+        data = new String[chunk];
     }
 
     public Sarray() {
@@ -59,14 +59,14 @@ public class Sarray {
 
     public String set(int index, String i) {
         checkIndex(index);
-        int old = data[index];
+        String old = data[index];
         data[index] = i;
         return old;
     }
 
-    public int remove(int index) {
+    public String remove(int index) {
         checkIndex(index);
-        int old = data[index];
+        String old = data[index];
         for (int i=index; i < last; i++) // count up from index
             data[i] = data[i+1];
         last--;
