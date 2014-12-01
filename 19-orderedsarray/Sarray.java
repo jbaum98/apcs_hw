@@ -18,7 +18,7 @@ public class Sarray {
     }
 
     private void makeSpace() {
-        if ( !hasSpace() ) { 
+        if ( !hasSpace() ) {
             String[] new_data = new String[data.length + chunk]; // new array with chunk more spaces
             for (int i = 0; i < data.length; i++) // copy data over
                 new_data[i] = data[i];
@@ -74,11 +74,12 @@ public class Sarray {
     }
 
     public String toString() {
+        if (size() == 0) return "[]";
         String out = "[ ";
         for (int i = 0; i < size(); i++) {
             if (i == last)
                 out += data[i] + " ]";
-            else  
+            else
                 out += data[i] + ", ";
         }
         return out;
