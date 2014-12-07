@@ -85,6 +85,15 @@ public class Sarray {
         return out;
     }
 
+    public boolean isSorted() {
+        for (int i = 1; i < size(); i++) {
+            if (data[i-1].compareTo(data[i]) > 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private void shift(int index) {
       String shiftee = data[index];
       int i;
@@ -115,6 +124,22 @@ public class Sarray {
         }
     }
 
+    private void swap(int i, int j) {
+        String buffer = data[i];
+        data[i] = data[j];
+        data[j] = buffer;
+    }
+
+    public void bsort() {
+        while (!isSorted()) {
+            int i = 1;
+            while (i < size() && data[i-1].compareTo(data[i]) <= 0) { // find mismatched pairs
+                i++;
+            }
+            swap(i-1, i);
+        }
+    }
+
     public static void main(String[] args) {
         Sarray s = new Sarray();
 /*        System.out.println("Should be 0: " + s.size());
@@ -139,7 +164,7 @@ public class Sarray {
         s.add("b");
         s.add("d");
         System.out.println(s);
-        s.ssort();
+        s.bsort();
         System.out.println(s);
     }
 }
