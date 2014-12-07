@@ -84,7 +84,7 @@ public class Sarray {
         }
         return out;
     }
-    
+
     private void shift(int index) {
       String shiftee = data[index];
       int i;
@@ -93,11 +93,26 @@ public class Sarray {
       }
       data[i] = shiftee;
     }
-    
+
     public void isort() {
       for (int divider = 0; divider < size(); divider++) {
         shift(divider);
       }
+    }
+
+    public void ssort() {
+        for (int divider = 0; divider < size(); divider++) { // divider seperates sorted from unsorted
+            String king = data[divider];
+            int king_index = divider;
+            for (int i = divider; i < size(); i++) {
+                if (data[i].compareTo(king) < 0 ) {
+                    king = data[i];
+                    king_index = i;
+                }
+            }
+            data[king_index] = data[divider];
+            data[divider] = king;
+        }
     }
 
     public static void main(String[] args) {
@@ -124,7 +139,7 @@ public class Sarray {
         s.add("b");
         s.add("d");
         System.out.println(s);
-        s.isort();
+        s.ssort();
         System.out.println(s);
     }
 }
