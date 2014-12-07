@@ -131,12 +131,12 @@ public class Sarray {
     }
 
     public void bsort() {
-        while (!isSorted()) {
-            int i = 1;
-            while (i < size() && data[i-1].compareTo(data[i]) <= 0) { // find mismatched pairs
-                i++;
+        for (int divider = 0; divider < size(); divider++) {
+            for (int i = divider; i+1 < size(); i++) {
+                if (data[i].compareTo(data[i+1]) > 0) {
+                    swap(i, i+1);
+                }
             }
-            swap(i-1, i);
         }
     }
 
@@ -164,7 +164,7 @@ public class Sarray {
         s.add("b");
         s.add("d");
         System.out.println(s);
-        s.bsort();
+        s.isort();
         System.out.println(s);
     }
 }
