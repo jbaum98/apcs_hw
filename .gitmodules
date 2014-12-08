@@ -1,3 +1,6 @@
 [submodule "12-stuyablo"]
 	path = 12-stuyablo
 	url = git@github.com:jbaum98/stuyablo
+[submodule "classcode"]
+	path = classcode
+	url = git@github.com:stuycs-apcs-z/classcode.git
