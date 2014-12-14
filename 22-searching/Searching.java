@@ -35,52 +35,66 @@ public class Searching {
         }
         return null;
     }
-    
+
     public Comparable bSearch(Comparable item) {
-      int first = 0;
-      int last = a.length;
-      while (first != last) {
-        int mid = (first + last) / 2;
-        if (a[mid].compareTo(item) > 0) {
-          first = mid;
-        } else {
-          last = mid;
+        int first = 0;
+        int last = a.length;
+        while (last - first > 1) {
+            System.out.println("first is " + first);
+            System.out.println("last is " + last);
+            int mid = (first + last) / 2;
+            if (equal(a[mid], item)) {
+                return mid;
+            } if (a[mid].compareTo(item) > 0) {
+                last = mid; // go to the smaller half
+            } else {
+                first = mid; // go to the bigger half
+            }
         }
-      }
-      if (equal(a[first], item)) {
-        return null;
-      } else {
-        return first;
-      }
+        if (equal(a[first], item)) {
+            return first;
+        } else {
+            return null;
+        }
     }
 
     public Comparable rbSearch(Comparable item) {
-      return rbSearch(item, 0, a.length);
+        return rbSearch(item, 0, a.length);
     }
-    
-    private Comparable rbSearch (item, first, last) {
-      if (first == last) { // base case: 1 element list
-        if (equal(a[first], item)) {
-          return null;
-        } else {
-          return first;
+
+    private Comparable rbSearch (Comparable item, int first, int last) {
+        System.out.println("first is " + first);
+        System.out.println("last is " + last);
+        if (last-first <= 1) { // base case: 1 element list
+            if (equal(a[first], item)) {
+                return first;
+            } else {
+                return null;
+            }
+        } else { // recursive call depending on greater or less
+            int mid = (first + last) / 2;
+            if (equal(a[mid], item)) {
+                return mid;
+            } if (a[mid].compareTo(item) > 0) {
+                return rbSearch(item, first, mid);
+            } else {
+                return rbSearch(item, mid, last);
+            }
         }
-      } else { // recursive call depending on greater or less
-        int mid = (first + last) / 2;
-        if (a[mid].compareTo(item) > 0) {
-          return rbSearch(item, mid, last);
-        } else {
-          return rbSearch(item, first, mid);
-        }
-      }
     }
 
     public static void main(String[] args) {
         int length = 100;
         Searching s = new Searching(length);
         for (int i = 0; i < length; i++) {
-             s.additem((int)(Math.random() * length), i);
+            s.additem((int)(Math.random() * length), i);
         }
         System.out.println(s);
+        System.out.println(s.iSearch(1));
+        s.sort();
+        System.out.println(s);
+        System.out.println("sorted");
+        System.out.println(s.bSearch(1));
+        System.out.println(s.rbSearch(1));
     }
 }
